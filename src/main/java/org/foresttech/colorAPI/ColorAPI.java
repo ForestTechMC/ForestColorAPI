@@ -1,4 +1,4 @@
-package org.foresttech.colorAPI.api;
+package org.foresttech.colorAPI;
 
 import net.md_5.bungee.api.ChatColor;
 import org.foresttech.colorAPI.enums.ColorizeType;

@@ -7,7 +7,7 @@
 [![badge](https://img.shields.io/discord/896466173166747650?label=discord)](https://discord.gg/2PpdrfxhD4)
 [![badge](https://img.shields.io/github/license/ForestTechMC/ForestColorAPI)](https://github.com/ForestTechMC/ForestColorAPI/blob/master/LICENSE.txt)
 
-**[JavaDoc 1.0](https://foresttechmc.github.io/ForestColorAPI/1.0/)**
+**[JavaDoc 1.1](https://foresttechmc.github.io/ForestColorAPI/1.1/)**
 
 Small and effective Color API for your plugins.\
 Only 1.16+ version of spigot support!
