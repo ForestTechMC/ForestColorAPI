@@ -1,7 +1,7 @@
-package org.foresttech.colorAPI;
+package cz.foresttech.api;
 
 import net.md_5.bungee.api.ChatColor;
-import org.foresttech.colorAPI.enums.ColorizeType;
+import cz.foresttech.api.enums.ColorizeType;
 
 import java.awt.*;
 import java.util.Arrays;
