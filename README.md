@@ -7,7 +7,7 @@
 [![badge](https://img.shields.io/discord/896466173166747650?label=discord)](https://discord.gg/2PpdrfxhD4)
 [![badge](https://img.shields.io/github/license/ForestTechMC/ForestColorAPI)](https://github.com/ForestTechMC/ForestColorAPI/blob/master/LICENSE.txt)
 
-**[JavaDoc 1.1](https://foresttechmc.github.io/ForestColorAPI/1.1/)**
+**[JavaDoc 1.3](https://foresttechmc.github.io/ForestColorAPI/1.3/)**
 
 Small and effective Color API for your plugins.\
 Only 1.16+ version of spigot support!
@@ -70,7 +70,7 @@ dependencies {
 
 ### Example of patterns
 
-If you want to use gradient you need to use pattern like `{/#b36000}Super gradient!{/#72cc00}`
+If you want to use gradient you need to use pattern like `{#b36000>}Super gradient!{#72cc00<}`
 For normal RGB `{#72cc00}Super color!`
 
 
@@ -78,15 +78,15 @@ For normal RGB `{#72cc00}Super color!`
 
 ```java
 // Example of removing chars, legacy colors, and patterns
-String cleanMessage = ColorAPI.clear("{/#b36000}Super gradient{/#72cc00} &3Some color");
+String cleanMessage = ColorAPI.clear("{#b36000>}Super gradient{#72cc00<} &3Some color");
 // Output -> "Super gradient Some color" message without patterns, colors, chars...
 // You can use separate methods to clear only some kind of coloring
 
 // Example of universal usage for colorize
-player.sendMessage(ColorAPI.colorize("{/#b36000}Super gradient{/#72cc00} {#b36000}Super RGB color"));
+player.sendMessage(ColorAPI.colorize("{#b36000>}Super gradient{#72cc00<} {#b36000}Super RGB color"));
 
 // Example of gradient method
-player.sendMessage(ColorAPI.colorizeGradient("{/#b36000}Super gradient{/#72cc00}"));
+player.sendMessage(ColorAPI.colorizeGradient("{#b36000>}Super gradient{#72cc00<}"));
 
 // Example of RGB method
 player.sendMessage(ColorAPI.colorizeRGB("{#b36000}Super RGB color"));

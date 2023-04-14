@@ -15,7 +15,8 @@ public class ColorAPI {
     private static final List<String> legacyColors = Arrays.asList("&0", "&1", "&2", "&3", "&4", "&5", "&6", "&7", "&8", "&9", "&a", "&b", "&c", "&d", "&e", "§0", "§1", "§2", "§3", "§4", "§5", "§6", "§7", "§8", "§9", "§a", "§b", "§c", "§d", "§e");
     private static final List<String> specialChars = Arrays.asList("&l", "&n", "&o", "&k", "&m", "§l", "§n", "§o", "§k", "§m");
     private static final Pattern patternNormal = Pattern.compile("\\{#([0-9A-Fa-f]{6})\\}");
-    private static final Pattern patternGrad = Pattern.compile("\\{/#([0-9A-Fa-f]{6})\\}(.*?)\\{/#([0-9A-Fa-f]{6})\\}");
+    private static final Pattern patternGrad = Pattern.compile("\\{#([0-9A-Fa-f]{6})>\\}(.*?)\\{#([0-9A-Fa-f]{6})<\\}");
+    private static final Pattern patternOneFromTwo = Pattern.compile("\\{#([0-9A-Fa-f]{6})<>\\}");
     private static Matcher matcher;
 
     /**
@@ -97,7 +98,8 @@ public class ColorAPI {
      * @return string without patterns
      */
     public static String removePatterns(String input) {
-        input = input.replaceAll("\\{/#([0-9A-Fa-f]{6})\\}", "");
+        input = input.replaceAll("\\{#([0-9A-Fa-f]{6})>\\}", "");
+        input = input.replaceAll("\\{#([0-9A-Fa-f]{6})<\\}", "");
         input = input.replaceAll("\\{#([0-9A-Fa-f]{6})\\}", "");
         return input;
     }
@@ -125,7 +127,6 @@ public class ColorAPI {
         return input;
     }
 
-
     /**
      *
      * Here we can call for gradient colorize
@@ -138,6 +139,16 @@ public class ColorAPI {
      * @return colored output with gradient
      */
     public static String colorizeGradient(String input) {
+        matcher = patternOneFromTwo.matcher(input);
+
+        StringBuffer output = new StringBuffer();
+
+        while (matcher.find()) {
+            String text = matcher.group(1);
+            matcher.appendReplacement(output, "{#" + text + "<}{#" + text + ">}");
+        }
+        input = String.valueOf(output);
+
         matcher = patternGrad.matcher(input);
         while (matcher.find()) {
             input = input.replace(matcher.group(), color(matcher.group(2), new Color(Integer.parseInt(matcher.group(1), 16)), new Color(Integer.parseInt(matcher.group(3), 16))));
