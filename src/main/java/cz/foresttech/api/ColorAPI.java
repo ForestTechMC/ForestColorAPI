@@ -147,7 +147,9 @@ public class ColorAPI {
             String text = matcher.group(1);
             matcher.appendReplacement(output, "{#" + text + "<}{#" + text + ">}");
         }
-        input = String.valueOf(output);
+        matcher.appendTail(output);
+
+        input = output.toString();
 
         matcher = patternGrad.matcher(input);
         while (matcher.find()) {
