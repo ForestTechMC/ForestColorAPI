@@ -45,7 +45,7 @@ You need to add this dependency into your plugin, then look at under the depende
         <groupId>com.github.ForestTechMC</groupId>
         <artifactId>ForestColorAPI</artifactId>
         <version>VERSION</version>
-        <scope>provided</scope>
+        <scope>compile</scope>
     </dependency>
 </dependencies>
 ```
