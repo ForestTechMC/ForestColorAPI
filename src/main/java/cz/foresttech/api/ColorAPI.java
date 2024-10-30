@@ -20,7 +20,6 @@ public class ColorAPI {
     private static Matcher matcher;
 
     /**
-     *
      * Here we can select the type of colorize,
      * soo if we only want RGB we do ColorizeType.RGB into input
      *
@@ -37,7 +36,6 @@ public class ColorAPI {
     }
 
     /**
-     *
      * This method clear whole string
      *
      * @return string without patterns, legacy colors, and special chars
@@ -50,7 +48,6 @@ public class ColorAPI {
     }
 
     /**
-     *
      * In this method we remove specialChars like "&n", "&r"...
      * Example:
      * "&kForestTech ❤" -> "ForestTech ❤"
@@ -70,7 +67,6 @@ public class ColorAPI {
     }
 
     /**
-     *
      * In this method we remove legacyColors like "&2", "&c"...
      * Example:
      * "&2ForestTech ❤" -> "ForestTech ❤"
@@ -89,7 +85,6 @@ public class ColorAPI {
     }
 
     /**
-     *
      * If we want to remove patterns from message we can use this
      * Example:
      * "{#00e64e}ForestTech ❤" -> "ForestTech ❤"
@@ -105,7 +100,6 @@ public class ColorAPI {
     }
 
     /**
-     *
      * Universal colorize method for add colors into message
      *
      * @param input message
@@ -118,9 +112,7 @@ public class ColorAPI {
     }
 
     /**
-     *
      * Method for normal translate colors from spigot
-     *
      */
     public static String colorizeClassic(String input) {
         input = ChatColor.translateAlternateColorCodes('&', input);
@@ -128,9 +120,8 @@ public class ColorAPI {
     }
 
     /**
-     *
      * Here we can call for gradient colorize
-     *
+     * <p>
      * Group 1 = First gradient
      * Group 3 = Second gradient
      * Group 2 = content
@@ -159,7 +150,6 @@ public class ColorAPI {
     }
 
     /**
-     *
      * This method only do normal RGB without gradient
      *
      * @param input message
@@ -167,19 +157,18 @@ public class ColorAPI {
      */
     public static String colorizeRGB(String input) {
         matcher = patternNormal.matcher(input);
-        String color;
+
         while (matcher.find()) {
-            color = matcher.group(1);
-            if (color == null) {
-                color = matcher.group(2);
+            String color = matcher.group(1);
+            if (color != null) {
+                input = input.replace(matcher.group(), getColor(color) + "");
             }
-            input = input.replace(matcher.group(), getColor(color) + "");
         }
+
         return input;
     }
 
     /**
-     *
      * Color method for gradient for example this take
      * the first one gradient, and second one, and do gradient in the message
      *
@@ -219,9 +208,7 @@ public class ColorAPI {
     }
 
     /**
-     *
      * @return colors for string
-     *
      */
     private static ChatColor[] createGradient(Color first, Color second, int amount) {
         ChatColor[] colors = new ChatColor[amount];
