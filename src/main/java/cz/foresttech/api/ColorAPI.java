@@ -156,16 +156,23 @@ public class ColorAPI {
      * @return colored rgb output
      */
     public static String colorizeRGB(String input) {
-        matcher = patternNormal.matcher(input);
+        Matcher matcher = patternNormal.matcher(input);
+        StringBuilder result = new StringBuilder(input.length());
 
+        int lastEnd = 0;
         while (matcher.find()) {
             String color = matcher.group(1);
+            result.append(input, lastEnd, matcher.start());
+
             if (color != null) {
-                input = input.replace(matcher.group(), getColor(color) + "");
+                result.append(getColor(color));
             }
+
+            lastEnd = matcher.end();
         }
 
-        return input;
+        result.append(input.substring(lastEnd));
+        return result.toString();
     }
 
     /**
