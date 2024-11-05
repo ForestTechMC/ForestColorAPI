@@ -17,7 +17,6 @@ public class ColorAPI {
     private static final Pattern patternNormal = Pattern.compile("\\{#([0-9A-Fa-f]{6})\\}");
     private static final Pattern patternGrad = Pattern.compile("\\{#([0-9A-Fa-f]{6})>\\}(.*?)\\{#([0-9A-Fa-f]{6})<\\}");
     private static final Pattern patternOneFromTwo = Pattern.compile("\\{#([0-9A-Fa-f]{6})<>\\}");
-    private static Matcher matcher;
 
     /**
      * Here we can select the type of colorize,
@@ -130,9 +129,9 @@ public class ColorAPI {
      * @return colored output with gradient
      */
     public static String colorizeGradient(String input) {
-        matcher = patternOneFromTwo.matcher(input);
+        Matcher matcher = patternOneFromTwo.matcher(input);
 
-        StringBuffer output = new StringBuffer();
+        StringBuilder output = new StringBuilder();
 
         while (matcher.find()) {
             String text = matcher.group(1);
